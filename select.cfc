@@ -1,7 +1,7 @@
 component accessors="true" {
 	property name="q" type="any";
 	property name="sql" type="string";
-// settable props
+	// settable props
 	property name="select" type="any";
 	property name="from" type="string";
 	property name="innerJoin" type="array";
@@ -12,7 +12,7 @@ component accessors="true" {
 	property name="params" type="struct";
 	property name="cachedWithinMinutes" type="numeric";
 	property name="Datasource" type="string";
-// Internals
+	// Internals
 	property name="hasPrepared" type="boolean" default=false;
 	property name="hasSelect" type="boolean" default=false;
 	property name="hasOrderBy" type="boolean" default=false;
@@ -27,7 +27,7 @@ component accessors="true" {
 
 	public select function init(){
 		variables.params = {};
-// If we have arguments, kick off select()
+		// If we have arguments, kick off select()
 		if( arrayLen(arguments) ){
 			if( structKeyExists(arguments,'datasource') && len(trim(arguments.datasource)) || structKeyExists(arguments,'dsn') && len(trim(arguments.dsn)) ) withDatasource(dsn=arguments[structKeyExists(arguments,'datasource') ? 'datasource':'dsn']);
 
@@ -82,8 +82,8 @@ component accessors="true" {
 		if(isNumeric(arguments.offset) AND arguments.offset > 0){
 			setOffset(arguments.offset);
 			setHasOffset(true);
-// Just using offset alone should not trigger a limit.
-//setHasLimit(true);
+			// Just using offset alone should not trigger a limit.
+			//setHasLimit(true);
 		}
 		return this;
 	}
@@ -132,7 +132,7 @@ component accessors="true" {
 		var queryArguments = {};
 		queryArguments.sql = trim(arrayToList(qArray,' '));
 
-//if(structKeyExists(request,'foo')) writedump(var=queryArguments.sql,abort=1);
+		//if(structKeyExists(request,'foo')) writedump(var=queryArguments.sql,abort=1);
 
 		setSQL(queryArguments.sql);
 		queryArguments.name = '_' & hash(queryArguments.sql);
