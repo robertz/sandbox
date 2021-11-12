@@ -1,30 +1,38 @@
 component extends="coldbox.system.EventHandler" {
+	property name = "UserService" inject;
+	property name = "defaultUser" inject = "coldbox:setting:defaultUser";
 
-	/**
-	 * Default Action
-	 */
+	// Default event
 	function index( event, rc, prc ) {
-		prc.welcomeMessage = "Welcome to ColdBox!";
+		if(prc.userid == defaultUser) relocate('main.login');
 		event.setView( "main/index" );
 	}
 
-	/**
-	 * Produce some restfulf data
-	 */
-	function data( event, rc, prc ) {
-		return [
-			{ "id" : createUUID(), name : "Luis" },
-			{ "id" : createUUID(), name : "JOe" },
-			{ "id" : createUUID(), name : "Bob" },
-			{ "id" : createUUID(), name : "Darth" }
-		];
+	// Login page
+	function login( event, rc, prc ) {
+		prc.header.title = "Login";
+
+		event.setLayout('Login');
+		event.setView('main/login');
 	}
 
-	/**
-	 * Relocation example
-	 */
-	function doSomething( event, rc, prc ) {
-		relocate( "main.index" );
+	// logout
+	function logout( event, rc, prc ) {
+		client['userid'] = defaultUser;
+		relocate(url = "/");
+	}
+
+	// process login
+	function processLogin( event, rc, prc ) {
+		var em = rc.keyExists("user") ? rc.user : "";
+		var pw = rc.keyExists("pass") ? rc.pass : "";
+		var u = UserService.authenticateUser(em, pw);
+
+		if (u != defaultUser) {
+			client['userid'] = u;
+			relocate(url = '/');
+		}
+		relocate(url = '/');
 	}
 
 	/************************************** IMPLICIT ACTIONS *********************************************/

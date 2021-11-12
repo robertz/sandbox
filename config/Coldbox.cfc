@@ -15,7 +15,7 @@ component {
 		 */
 		coldbox = {
 			// Application Setup
-			appName                  : getSystemSetting( "APPNAME", "Your app name here" ),
+			appName                  : getSystemSetting( "APPNAME", "sandbox" ),
 			eventName                : "event",
 			// Development Settings
 			reinitPassword           : "",
@@ -37,7 +37,7 @@ component {
 			viewsExternalLocation    : "",
 			layoutsExternalLocation  : "",
 			handlersExternalLocation : "",
-			requestContextDecorator  : "",
+			requestContextDecorator  : "models.RequestContextDecorator",
 			controllerDecorator      : "",
 			// Error/Exception Handling
 			invalidHTTPMethodHandler : "",
@@ -59,7 +59,10 @@ component {
 		 * Custom Settings
 		 * --------------------------------------------------------------------------
 		 */
-		settings = {};
+		settings = {
+			defaultUser: "0042536a-0ccc-49a1-a5f4-d8aeb09e37ec",
+			baseUrl: "https://sandbox.kisdigital.com"
+		};
 
 		/**
 		 * --------------------------------------------------------------------------

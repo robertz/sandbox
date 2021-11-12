@@ -1,0 +1,13 @@
+.login {
+	background: url(//static.kisdigital.com/sandbox/background.jpeg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.login-input {
+	border-radius: 6px;
+	background-color: rgba(0, 0, 0, 0.4);
+	border: 2px solid black;
+}

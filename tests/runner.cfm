@@ -14,7 +14,7 @@
 <cfparam name="url.coverageEnabled"					default="false">
 <cfparam name="url.coveragePathToCapture"			default="#expandPath( '/root' )#">
 <cfparam name="url.coverageWhitelist"				default="">
-<cfparam name="url.coverageBlacklist"				default="/testbox,/coldbox,/tests,/modules,Application.cfc,/index.cfm">
+<cfparam name="url.coverageBlacklist"				default="/testbox,/coldbox,/tests,/modules,Application.cfc,/index.old.cfm">
 <!---<cfparam name="url.coverageBrowserOutputDir"		default="#expandPath( '/tests/results/coverageReport' )#">--->
 <!---<cfparam name="url.coverageSonarQubeXMLOutputPath"	default="#expandPath( '/tests/results/SonarQubeCoverage.xml' )#">--->
 
