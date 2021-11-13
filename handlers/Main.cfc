@@ -5,13 +5,16 @@ component extends="coldbox.system.EventHandler" {
 	// Default event
 	function index( event, rc, prc ) {
 		if(prc.userid == defaultUser) relocate('main.login');
+		// load libraries
+		prc.layout.headerjs.append("https://unpkg.com/vue@2.6.12/dist/vue.js");
+		prc.layout.headerjs.append("https://unpkg.com/moment@2.29.1/moment.js");
+		prc.layout.footerjs.append("/includes/js/feed.js");
 		event.setView( "main/index" );
 	}
 
 	// Login page
 	function login( event, rc, prc ) {
 		prc.header.title = "Login";
-
 		event.setLayout('Login');
 		event.setView('main/login');
 	}
@@ -27,7 +30,6 @@ component extends="coldbox.system.EventHandler" {
 		var em = rc.keyExists("user") ? rc.user : "";
 		var pw = rc.keyExists("pass") ? rc.pass : "";
 		var u = UserService.authenticateUser(em, pw);
-
 		if (u != defaultUser) {
 			client['userid'] = u;
 			relocate(url = '/');

@@ -20,6 +20,7 @@ component extends="coldbox.system.web.context.RequestContextDecorator" {
 
 		prc['userid'] = client.userid;
 		prc['jsonData'] = {};
+		prc['jsonData']['user'] = prc.user;
 
 		prc['layout']['headerjs'] = [];
 		prc['layout']['footerjs'] = [];

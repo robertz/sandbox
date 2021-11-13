@@ -1,0 +1,20 @@
+body {
+	/*background: url(//static.kisdigital.com/sandbox/cityscape.jpeg) no-repeat center center fixed;*/
+	/*-webkit-background-size: cover;*/
+	/*-moz-background-size: cover;*/
+	/*-o-background-size: cover;*/
+	/*background-size: cover;*/
+	background: #eee;
+}
+
+.sidebar {
+	border-radius: 8px;
+	padding: 8px;
+}
+
+.feed-item {
+	border-radius: 8px;
+	border: 1px solid silver;
+	background: #fff;
+	padding: 4px;
+}
