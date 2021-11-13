@@ -7,7 +7,6 @@ const app = new Vue({
 	el: '#app',
 	data: {
 		user: window.kdfe.user,
-		count: 0,
 		social: []
 	},
 	created() {
