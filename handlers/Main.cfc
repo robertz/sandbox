@@ -4,6 +4,7 @@ component extends="coldbox.system.EventHandler" {
 
 	// Default event
 	function index( event, rc, prc ) {
+
 		if(prc.userid == defaultUser) relocate('main.login');
 		// load libraries
 		prc.layout.headerjs.append("https://unpkg.com/vue@2.6.12/dist/vue.js");
