@@ -16,10 +16,10 @@ component {
 				its.attr("name").find("keywords") ||
 				its.attr("name").find("description") ||
 				its.attr("name").find("dc.");
-		});
+			});
 		// set the value based on whether the value is a name or property
 		filtered.each((i) => {
-		len(i.attr("name")) ? meta[i.attr("name")] = i.attr("content") : meta[i.attr("property")] = i.attr("content");
+			len(i.attr("name")) ? meta[i.attr("name")] = i.attr("content") : meta[i.attr("property")] = i.attr("content");
 		});
 		return meta;
 	}

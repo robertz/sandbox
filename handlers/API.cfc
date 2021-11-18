@@ -17,15 +17,15 @@ component extends="coldbox.system.EventHandler" {
 	function spider( event, rc, prc ) {
 		var u = event.getValue("u", "");
 		var res = SpiderService.spider(linkUrl = u);
-
+		// prepare insert
 		var params = {
 			id: { cfsqltype: 'cf_sql_varchar', value: createUUID() },
 			owner: { cfsqltype: 'cf_sql_varchar', value: defaultUser },
 			hash: { cfsqltype: 'cf_sql_varchar', value: lcase(hash(serializeJSON(res), "SHA-256")) },
-			link: { cfsqltype: 'cf_sql_varchar', value: res.keyExists('og:url') ? res['og:url'] : "" },
-			title: { cfsqltype: 'cf_sql_varchar', value: res.keyExists('og:title') ? res['og:title'] : "" },
-			description: { cfsqltype: 'cf_sql_varchar', value: res.keyExists('og:description') ? res['og:description'] : "" },
-			image: { cfsqltype: 'cf_sql_varchar', value: res.keyExists('og:image') ? res['og:image'] : "" },
+			link: { cfsqltype: 'cf_sql_varchar', value: res.keyExists('og:url') ? res['og:url'] : ( res.keyExists('twitter:url') ? res['twitter:url'] : "" ) },
+			title: { cfsqltype: 'cf_sql_varchar', value: res.keyExists('og:title') ? res['og:title'] : ( res.keyExists('twitter:title') ? res['twitter:title'] : "" ) },
+			description: { cfsqltype: 'cf_sql_varchar', value: res.keyExists('og:description') ? res['og:description'] : ( res.keyExists('twitter:description') ? res['twitter:description'] : "" ) },
+			image: { cfsqltype: 'cf_sql_varchar', value: res.keyExists('og:image') ? res['og:image'] : ( res.keyExists('twitter:image:url') ? res['twitter:image:url'] : "" ) },
 			data: { cfsqltype: 'cf_sql_varchar', value: serializeJSON(res) }
 		};
 
